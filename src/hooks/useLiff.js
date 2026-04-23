@@ -182,7 +182,7 @@ export const useLiff = () => {
   const createShortcut = async () => {
     try {
       await window.liff.createShortcutOnHomeScreen({
-        url: `https://line-mini-app-edzw6cdg.stackblitz.io`
+        url: `https://line-fronted.vercel.app`
       });
     } catch (err) {
       console.error('Error creating shortcut:', err);

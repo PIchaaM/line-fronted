@@ -219,7 +219,7 @@ btnShortcut.onclick = async() => {
   // 14.1. Add shortcut (Verified MINI App)
   await liff.createShortcutOnHomeScreen({
     // url: `https://miniapp.line.me/${liffId}`
-    url: `https://line-mini-app-edzw6cdg.stackblitz.io`
+    url: `https://line-fronted.vercel.app`
     /**
     The url can be
     + LIFF URL,
