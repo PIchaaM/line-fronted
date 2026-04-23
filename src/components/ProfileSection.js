@@ -14,7 +14,7 @@ export const ProfileSection = ({ profile, pictureUrl }) => {
       <img 
         id="pictureUrl" 
         src={profile.pictureUrl || pictureUrl} 
-        alt="Profile Picture"
+        alt="User Profile"
       />
       <p><b>User ID:</b> {profile.userId}</p>
       <p><b>Display name:</b> {profile.displayName}</p>
