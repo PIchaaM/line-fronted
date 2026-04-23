@@ -1,0 +1,289 @@
+{
+  "1.2. Initialize": {
+    "scope": "javascript",
+    "prefix": "mini-init",
+    "body": [
+      "await liff.init({ liffId });"
+    ]
+  },
+  "2.1 Environment": {
+    "scope": "javascript",
+    "prefix": "mini-env",
+    "body": [
+      "// android, ios, web",
+      "os.append(liff.getOS());",
+      "",    
+      "appLanguage.append(liff.getAppLanguage());",
+      "sdkVersion.append(liff.getVersion());",
+      "lineVersion.append(liff.getLineVersion());",
+      "isInClient.append(liff.isInClient());",
+      "isLoggedIn.append(liff.isLoggedIn());",
+      "",
+      "// utou, group, room, external, none",
+      "type.append(liff.getContext().type);"
+    ]
+  },
+  "2.3 Try": {
+    "scope": "javascript",
+    "prefix": "mini-try",
+    "body": [
+      "switch (liff.getOS()) {",
+      "\tcase \"android\": body.style.backgroundColor = \"#eff0e9\"; break;",
+      "\tcase \"ios\": body.style.backgroundColor = \"#eeeeee\"; break;",
+      "}"
+    ]
+  },
+  "3.1 Profile": {
+    "scope": "javascript",
+    "prefix": "mini-profile",
+    "body": [
+      "const profile = await liff.getProfile();",
+      "pictureUrl.src = profile.pictureUrl;",
+      "userId.append(profile.userId);",
+      "displayName.append(profile.displayName);",
+      "statusMessage.append(profile.statusMessage);"
+    ]
+  },
+  "4. Email": {
+    "scope": "javascript",
+    "prefix": "mini-email",
+    "body": ["email.append(liff.getDecodedIDToken().email);"]
+  },
+  "5. isInClient": {
+    "scope": "javascript",
+    "prefix": "mini-isInClient",
+    "body": [
+      "if (liff.isInClient()) {",
+      "\tgetUserProfile();",
+      "",
+      "\t// 9.3. Display send messages button",
+      "",
+      "\t// 10.3. Call manageViewForLoggedInUser();",
+      "",
+      "\t// 15.2. Call getFriendship();",
+      "",
+      "\t// 16.2. Call getAuthentication();",
+      "} else {",
+      "\t// 18. Bonus: Servive In-App browser",
+      "",
+      "\t// 6. Is logged in ?",
+      "\tbtnLogIn.style.display = \"block\";",
+      "\tbtnLogOut.style.display = \"none\";",
+      "}",
+      "",
+      "// 12.2. Display open window button",
+      "",
+      "// 13.2. Display close window button"
+    ]
+  },
+  "6. isLoggedIn": {
+    "scope": "javascript",
+    "prefix": "mini-isLoggedIn",
+    "body": [
+      "if (liff.isLoggedIn()) {",
+      "\tgetUserProfile();",
+      "\tbtnLogIn.style.display = \"none\";",
+      "\tbtnLogOut.style.display = \"block\";",
+      "",
+      "\t// 10.4. Call manageViewForLoggedInUser();",
+      "",
+      "\t// 15.3. Call getFriendship();",
+      "",
+      "\t// 16.3. Call getAuthentication();",
+      "} else {",
+      "\tbtnLogIn.style.display = \"block\";",
+      "\tbtnLogOut.style.display = \"none\";",
+      "}"
+    ]
+  },
+  "7. Login": {
+    "scope": "javascript",
+    "prefix": "mini-login",
+    "body": ["liff.login();"]
+  },
+  "8. Logout": {
+    "scope": "javascript",
+    "prefix": "mini-logout",
+    "body": [
+      "liff.logout();",
+      "window.location.reload();"
+    ]
+  },
+  "9.1 Check context": {
+    "scope": "javascript",
+    "prefix": "mini-context",
+    "body": [
+      "if (![\"none\", \"external\"].includes(liff.getContext()).type) {",
+      "\t// 9.2. Send messages",
+      "}"
+    ]
+  },
+  "9.2 Send messages": {
+    "scope": "javascript",
+    "prefix": "mini-send",
+    "body": [
+      "await liff.sendMessages([",
+      "\t{",
+      "\t\ttype: \"sticker\",",
+      "\t\tpackageId: \"1\",",
+      "\t\tstickerId: \"1\"",
+      "\t},",
+      "\t{",
+      "\t\ttype: \"text\",",
+      "\t\ttext: \"This message was sent by sendMessages()\"",
+      "\t}",
+      "]);",
+      "alert(\"Message sent\");"
+    ]
+  },
+  "9.3 Send button": {
+    "scope": "javascript",
+    "prefix": "mini-send-button",
+    "body": ["btnSend.style.display = \"block\";"]
+  },
+  "10.1 Share messages": {
+    "scope": "javascript",
+    "prefix": "mini-share",
+    "body": [
+      "await liff.shareTargetPicker([",
+      "\t{",
+      "\t\ttype: \"flex\",",
+      "\t\taltText: \"This message was shared by shareTargetPicker()\",",
+      "\t\tcontents: {",
+      "\t\t\ttype: \"bubble\",",
+      "\t\t\thero: {",
+      "\t\t\t\ttype: \"image\",",
+      "\t\t\t\turl: \"https://vos.line-scdn.net/imgs/apis/ic_mini.png\",",
+      "\t\t\t\taspectRatio: \"1:1\",",
+      "\t\t\t\tsize: \"full\"",
+      "\t\t\t}",
+      "\t\t}",
+      "\t}",
+      "]);"
+    ]
+  },
+  "10.2 Share button": {
+    "scope": "javascript",
+    "prefix": "mini-share-button",
+    "body": ["btnShare.style.display = \"block\";"]
+  },
+  "11.1 QR code": {
+    "scope": "javascript",
+    "prefix": "mini-qr",
+    "body": [
+      "const result = await liff.scanCodeV2();",
+      "qrCode.append(result.value);"
+    ]
+  },
+  "11.2 QR button": {
+    "scope": "javascript",
+    "prefix": "mini-qr-button",
+    "body": ["btnScanCode.style.display = \"block\";"]
+  },
+  "12.1 Open window": {
+    "scope": "javascript",
+    "prefix": "mini-open",
+    "body": [
+      "liff.openWindow({",
+      "\turl: \"https://linedevth.line.me\",",
+      "\texternal: true",
+      "});"
+    ]
+  },
+  "12.2 Open button": {
+    "scope": "javascript",
+    "prefix": "mini-open-button",
+    "body": ["btnOpenWindow.style.display = \"block\";"]
+  },
+  "13.1 Close window": {
+    "scope": "javascript",
+    "prefix": "mini-close",
+    "body": ["liff.closeWindow();"]
+  },
+  "13.2 Close button": {
+    "scope": "javascript",
+    "prefix": "mini-close-button",
+    "body": ["btnCloseWindow.style.display = \"block\";"]
+  },
+  "14.1 Shortcut": {
+    "scope": "javascript",
+    "prefix": "mini-shortcut",
+    "body": [
+      "await liff.createShortcutOnHomeScreen({",
+      "\turl: `https://miniapp.line.me/\\${liffId}`",
+      "\t/**",
+      "\tThe url can be",
+      "\t+ LIFF URL,",
+      "\t+ Permanent link,",
+      "\t+ The endpoint URL of the LINE MINI App,",
+      "\t+ URL that begins with the endpoint URL of the LINE MINI App",
+      "\t*/",
+      "});"
+    ]
+  },
+  "14.2 isMobile": {
+    "scope": "javascript",
+    "prefix": "mini-isMobile",
+    "body": ["import { isMobile } from './script.js';"]
+  },
+  "14.3 Shortcut button": {
+    "scope": "javascript",
+    "prefix": "mini-shortcut-button",
+    "body": [
+      "if (isMobile()) {",
+      "\tbtnShortcut.style.display = \"block\";",
+      "}"
+    ]
+  },
+  "15.1 Friendship": {
+    "scope": "javascript",
+    "prefix": "mini-friend",
+    "body": [
+      "let msg = \"You and our chatbot are friend\";",
+      "const friend = await liff.getFriendship();",
+      "if (!friend.friendFlag) {",
+      "\tmsg = \"<a href=\\\"https://line.me/R/ti/p/@BOT-ID\\\">Follow our chatbot now!</a>\";",
+      "}",
+      "friendship.innerHTML = msg;"
+    ]
+  },
+  "16.1 Authentication": {
+    "scope": "javascript",
+    "prefix": "mini-auth",
+    "body": [
+      "accessToken.append(liff.getAccessToken());",
+      "idToken.append(liff.getIDToken());"
+    ]
+  },
+  "17.1 Service messages": {
+    "scope": "javascript",
+    "prefix": "mini-service-message",
+    "body": [
+      "const url = \"URL\";",
+      "const response = await fetch(url, {",
+      "\tmethod: \"POST\",",
+      "\theaders: { \"Content-Type\": \"application/json\" },",
+      "\tbody: JSON.stringify({ liffAccessToken: liff.getAccessToken() })",
+      "});",
+      "const data = await response.json();",
+      "serviceMessage.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;",
+      "alert(\"Message sent successfully!\");"
+    ]
+  },
+  "17.2 Service messages button": {
+    "scope": "javascript",
+    "prefix": "mini-service-button",
+    "body": ["btnServiceMessage.style.display = \"block\";"]
+  },
+  "18 In-Aapp browser": {
+    "scope": "javascript",
+    "prefix": "mini-iab",
+    "body": [
+      "if (isMobile()) {",
+      "\twindow.location.replace(`line://app/\\${liffId}`);",
+      "\tsetTimeout(() => { window.close(); }, \"5000\");",
+      "\treturn;",
+      "}"
+    ]
+  }
+}
