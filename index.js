@@ -52,7 +52,7 @@ const serviceMessage = document.querySelector("#serviceMessage");
 const btnServiceMessage = document.querySelector("#btnServiceMessage");
 
 // 1.1. Specify your LIFF ID
-const liffId = "2009824215-ueogpC3a";
+const liffId = import.meta.env.VITE_LIFF_ID;
 const bodyElement = document.body;
 
 async function main() {
