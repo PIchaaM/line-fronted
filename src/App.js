@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLiff } from './hooks/useLiff';
-import { isMobile } from './utils/helpers';
 import { EnvironmentSection } from './components/EnvironmentSection';
 import { ProfileSection } from './components/ProfileSection';
 import { AuthenticationSection } from './components/AuthenticationSection';
@@ -11,6 +10,11 @@ import { ShortcutSection } from './components/ShortcutSection';
 import { FriendshipSection } from './components/FriendshipSection';
 import { ServiceMessageSection } from './components/ServiceMessageSection';
 import './App.css';
+
+// Simple mobile detection
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 function App() {
   const liff = useLiff();

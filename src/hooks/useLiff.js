@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { LIFF_ID } from '../utils/liff-config';
-import { isMobile } from '../utils/helpers';
+
+// Simple mobile detection
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 export const useLiff = () => {
   const [liffState, setLiffState] = useState({
